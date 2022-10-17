@@ -1,0 +1,46 @@
+PUBLISHER
+create table publisher(
+	id int primary key auto_increment,
+    	name varchar(50)
+);
+---------------------------------------------------
+GAME_TYPE
+create table game_type(
+	id int primary key auto_increment,
+    	game_type varchar(50)
+);
+---------------------------------------------------
+USER
+create table user(
+	id int primary key auto_increment,
+    user_name varchar(50),
+    user_password varchar(50),
+    date_of_birth date
+);
+---------------------------------------------------
+BOARD
+create table board(
+	id int primary key auto_increment,
+	board_name varchar(100),
+    description varchar(200),
+    average_play_time int,
+    min_player int,
+    max_player int,
+    publisher_id int,
+    game_type_id int,
+    foreign key(publisher_id) references publisher(id),
+    foreign key(game_type_id) references game_type(id)
+);
+---------------------------------------------------
+USER_BOARD
+create table user_game(
+	id int primary key auto_increment,
+	board_id int,
+    user_id int,
+    foreign key(board_id) references board(id),
+    foreign key(user_id) references user(id)
+);
+
+---------------------------------------------------
+---------------------------------------------------
+
