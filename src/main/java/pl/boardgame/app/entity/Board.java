@@ -3,7 +3,7 @@ package pl.boardgame.app.entity;
 import javax.persistence.*;
 
 @Entity
-public class BoardGame {
+public class Board {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -12,22 +12,30 @@ public class BoardGame {
     private int averagePlayTime;
     private int minPlayer;
     private int maxPlayer;
-    @ManyToOne
-    private Publisher publisherId;
-    @ManyToOne
-    private Game gameTypeId;
 
-    private BoardGame(String boardName, String description, int averagePlayTime, int minPlayer, int maxPlayer, Publisher publisherId, Game gameTypeId) {
+
+
+    @ManyToOne(fetch = FetchType.LAZY,optional = false)
+    @JoinColumn(name = "publisher_id",nullable = false)
+    private Publisher publisherId;
+
+    @ManyToOne(fetch = FetchType.LAZY,optional = false)
+    @JoinColumn(name = "game_type_id",nullable = false)
+    private GameType gameTypelist;
+
+
+
+    private Board(String boardName, String description, int averagePlayTime, int minPlayer, int maxPlayer, Publisher publisherId, GameType gameTypelist) {
         this.boardName = boardName;
         this.description = description;
         this.averagePlayTime = averagePlayTime;
         this.minPlayer = minPlayer;
         this.maxPlayer = maxPlayer;
         this.publisherId = publisherId;
-        this.gameTypeId = gameTypeId;
+        this.gameTypelist = gameTypelist;
     }
 
-    public BoardGame() {
+    public Board() {
     }
 
     public Long getId() {
@@ -86,13 +94,14 @@ public class BoardGame {
         this.publisherId = publisherId;
     }
 
-    public Game getGameTypeId() {
-        return gameTypeId;
+    public GameType getGameTypelist() {
+        return gameTypelist;
     }
 
-    public void setGameTypeId(Game gameTypeId) {
-        this.gameTypeId = gameTypeId;
+    public void setGameTypelist(GameType gameTypelist) {
+        this.gameTypelist = gameTypelist;
     }
+
     public static class BoardGameBuilder {
         private String boardName;
         private String description;
@@ -100,7 +109,7 @@ public class BoardGame {
         private int minPlayer;
         private int maxPlayer;
         private Publisher publisherId;
-        private Game gameTypeId;
+        private GameType gameType;
 
         public BoardGameBuilder setBoardName(String boardName) {
             this.boardName = boardName;
@@ -132,13 +141,13 @@ public class BoardGame {
             return this;
         }
 
-        public BoardGameBuilder setGameTypeId(Game gameTypeId) {
-            this.gameTypeId = gameTypeId;
+        public BoardGameBuilder setGameTypeList(GameType gameType) {
+            this.gameType = gameType;
             return this;
         }
 
-        public BoardGame build() {
-            return new BoardGame(boardName, description, averagePlayTime, minPlayer, maxPlayer, publisherId, gameTypeId);
+        public Board build() {
+            return new Board(boardName, description, averagePlayTime, minPlayer, maxPlayer, publisherId, gameType);
         }
     }
 

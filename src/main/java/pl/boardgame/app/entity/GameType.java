@@ -4,16 +4,18 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-public class Publisher {
-
+public class GameType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    @OneToMany(mappedBy = "publisherId",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private String type;
+
+    @OneToMany(mappedBy = "gameTypelist",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Set<Board> boardGames;
 
-    public Publisher() {
+
+
+    public GameType() {
     }
 
     public Long getId() {
@@ -24,11 +26,11 @@ public class Publisher {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getType() {
+        return type;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setType(String gameType) {
+        this.type = gameType;
     }
 }
