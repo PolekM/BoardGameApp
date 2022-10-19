@@ -20,6 +20,12 @@ public class User {
 
     }
 
+    public User(String userName, String userPassword, Date dateOfBirth) {
+        this.userName = userName;
+        this.userPassword = userPassword;
+        this.dateOfBirth = dateOfBirth;
+    }
+
     public Long getId() {
         return id;
     }

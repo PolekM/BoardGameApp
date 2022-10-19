@@ -13,9 +13,11 @@ public class GameType {
     @OneToMany(mappedBy = "gameTypelist",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Set<Board> boardGames;
 
-
-
     public GameType() {
+    }
+
+    public GameType(String type) {
+        this.type = type;
     }
 
     public Long getId() {
