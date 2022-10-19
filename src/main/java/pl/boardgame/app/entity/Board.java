@@ -1,6 +1,7 @@
 package pl.boardgame.app.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Board {
@@ -13,8 +14,6 @@ public class Board {
     private int minPlayer;
     private int maxPlayer;
 
-
-
     @ManyToOne(fetch = FetchType.LAZY,optional = false)
     @JoinColumn(name = "publisher_id",nullable = false)
     private Publisher publisherId;
@@ -22,6 +21,9 @@ public class Board {
     @ManyToOne(fetch = FetchType.LAZY,optional = false)
     @JoinColumn(name = "game_type_id",nullable = false)
     private GameType gameTypelist;
+
+    @OneToMany(mappedBy = "boardId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<UserGame> userGame;
 
 
 
