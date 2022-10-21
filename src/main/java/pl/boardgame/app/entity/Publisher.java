@@ -1,10 +1,11 @@
 package pl.boardgame.app.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
-public class Publisher {
+public class Publisher implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

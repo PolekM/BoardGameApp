@@ -1,19 +1,20 @@
 package pl.boardgame.app.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class UserGame {
+public class UserGame implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne
     @JoinColumn(name = "board_id", nullable = false)
     private Board boardId;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User userId;
 

@@ -1,11 +1,12 @@
 package pl.boardgame.app.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
 @Entity
-public class User {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,6 +14,8 @@ public class User {
     private String userName;
     private String userPassword;
     private Date dateOfBirth;
+
+
 
     @OneToMany(mappedBy = "userId",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private Set<UserGame> userGame;

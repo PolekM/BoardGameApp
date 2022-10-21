@@ -1,10 +1,13 @@
 package pl.boardgame.app.entity;
 
+
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
-public class Board {
+public class Board implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -14,15 +17,18 @@ public class Board {
     private int minPlayer;
     private int maxPlayer;
 
-    @ManyToOne(fetch = FetchType.LAZY,optional = false)
+
+    @ManyToOne
     @JoinColumn(name = "publisher_id",nullable = false)
     private Publisher publisherId;
 
-    @ManyToOne(fetch = FetchType.LAZY,optional = false)
+
+    @ManyToOne
     @JoinColumn(name = "game_type_id",nullable = false)
     private GameType gameTypelist;
 
     @OneToMany(mappedBy = "boardId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    //@OneToMany(mappedBy = "boardId")
     private Set<UserGame> userGame;
 
 
