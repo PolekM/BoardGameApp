@@ -1,9 +1,14 @@
 package pl.boardgame.app.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@Getter
+@Setter
 public class UserGame implements Serializable {
 
     @Id
@@ -18,35 +23,4 @@ public class UserGame implements Serializable {
     @JoinColumn(name = "user_id", nullable = false)
     private User userId;
 
-    public UserGame() {
-    }
-
-    public UserGame(Board board_id, User user_id) {
-        this.boardId = board_id;
-        this.userId = user_id;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Board getBoardId() {
-        return boardId;
-    }
-
-    public void setBoardId(Board board_id) {
-        this.boardId = board_id;
-    }
-
-    public User getUserId() {
-        return userId;
-    }
-
-    public void setUserId(User user_id) {
-        this.userId = user_id;
-    }
 }

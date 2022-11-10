@@ -1,10 +1,15 @@
 package pl.boardgame.app.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
 
 @Entity
+@Getter
+@Setter
 public class Publisher implements Serializable {
 
     @Id
@@ -14,26 +19,5 @@ public class Publisher implements Serializable {
     @OneToMany(mappedBy = "publisherId",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Board> boardGames;
 
-    public Publisher() {
-    }
 
-    public Publisher(String name) {
-        this.name = name;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }

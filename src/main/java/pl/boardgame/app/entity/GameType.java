@@ -1,10 +1,15 @@
 package pl.boardgame.app.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
 
 @Entity
+@Getter
+@Setter
 public class GameType implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,26 +19,5 @@ public class GameType implements Serializable {
     @OneToMany(mappedBy = "gameTypelist",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private Set<Board> boardGames;
 
-    public GameType() {
-    }
 
-    public GameType(String type) {
-        this.type = type;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String gameType) {
-        this.type = gameType;
-    }
 }
