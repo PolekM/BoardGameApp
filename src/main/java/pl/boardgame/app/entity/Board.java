@@ -32,7 +32,7 @@ public class Board implements Serializable {
     @JoinColumn(name = "game_type_id",nullable = false)
     private GameType gameTypelist;
 
-    @OneToMany(mappedBy = "boardId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<UserGame> userGame;
+//    @OneToMany(mappedBy = "boardId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    private Set<UserGame> userGame;
 
 }

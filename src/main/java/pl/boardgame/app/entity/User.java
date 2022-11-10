@@ -22,7 +22,7 @@ public class User implements Serializable {
 
 
 
-    @OneToMany(mappedBy = "userId",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    private Set<UserGame> userGame;
+//    @OneToMany(mappedBy = "userId",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+//    private Set<UserGame> userGame;
 
 }
