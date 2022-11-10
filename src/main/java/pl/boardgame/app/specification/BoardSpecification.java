@@ -16,7 +16,10 @@ public class BoardSpecification{
         return (root, query, cb) -> {
             List<Predicate> predicateList = new ArrayList<>();
             ofNullable(gameFilter.getBoardName()).ifPresent(val -> predicateList.add(cb.like(cb.lower(root.get("boardName")),val.toLowerCase())));
+            ofNullable(gameFilter.getMaxPlayer()).ifPresent(val -> predicateList.add(cb.lessThanOrEqualTo(root.get("maxPlayer"),val)));
+            ofNullable(gameFilter.getAveragePlayTime()).ifPresent(val -> predicateList.add(cb.lessThanOrEqualTo(root.get("averagePlayTime"),val)));
             return cb.and(predicateList.toArray(new Predicate[predicateList.size()]));
+
         };
     }
 }

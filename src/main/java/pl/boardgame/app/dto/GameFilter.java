@@ -6,9 +6,8 @@ import lombok.Getter;
 public class GameFilter {
 
     private String boardName;
-    private String description;
-    private int averagePlayTime;
-    private int minPlayer;
-    private int maxPlayer;
+    private Integer averagePlayTime;
+    private Integer minPlayer;
+    private Integer maxPlayer;
 
 }
