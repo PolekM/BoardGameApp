@@ -29,4 +29,9 @@ public class BoardServiceImp implements BoardService {
     public List<Board> getGames(GameFilter gameFilter) {
         return boardRepository.findAll(BoardSpecification.boardSpecification(gameFilter));
     }
+
+    @Override
+    public void addGame(Board board) {
+        boardRepository.save(board);
+    }
 }

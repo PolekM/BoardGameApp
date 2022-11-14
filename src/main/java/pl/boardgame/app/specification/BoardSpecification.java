@@ -19,7 +19,6 @@ public class BoardSpecification{
             ofNullable(gameFilter.getMaxPlayer()).ifPresent(val -> predicateList.add(cb.lessThanOrEqualTo(root.get("maxPlayer"),val)));
             ofNullable(gameFilter.getAveragePlayTime()).ifPresent(val -> predicateList.add(cb.lessThanOrEqualTo(root.get("averagePlayTime"),val)));
             return cb.and(predicateList.toArray(new Predicate[predicateList.size()]));
-
         };
     }
 }

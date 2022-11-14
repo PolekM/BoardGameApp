@@ -27,4 +27,8 @@ public class BoardController {
     public List<Board> getGames(@RequestBody GameFilter gameFilter){
         return boardService.getGames(gameFilter);
     }
+    @PostMapping(value = "/games/new")
+    public void addGame(@RequestBody Board board){
+        boardService.addGame(board);
+    }
 }

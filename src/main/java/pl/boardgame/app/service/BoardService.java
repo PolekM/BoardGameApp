@@ -15,4 +15,5 @@ public interface BoardService {
     List<Board> getGames();
     List<Board> getGames(GameFilter gameFilter);
 
+    void addGame(Board board);
 }
