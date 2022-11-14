@@ -16,4 +16,6 @@ public interface BoardService {
     List<Board> getGames(GameFilter gameFilter);
 
     void addGame(Board board);
+
+    void deleteGame(Long id);
 }

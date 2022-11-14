@@ -14,6 +14,7 @@ import java.util.Set;
 @Getter
 @Setter
 public class Board implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,7 +23,6 @@ public class Board implements Serializable {
     private int averagePlayTime;
     private int minPlayer;
     private int maxPlayer;
-
 
     @ManyToOne
     @JoinColumn(name = "publisher_id",nullable = false)

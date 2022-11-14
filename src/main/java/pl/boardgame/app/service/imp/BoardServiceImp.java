@@ -34,4 +34,9 @@ public class BoardServiceImp implements BoardService {
     public void addGame(Board board) {
         boardRepository.save(board);
     }
+
+    @Override
+    public void deleteGame(Long id) {
+        boardRepository.deleteById(id);
+    }
 }

@@ -31,4 +31,9 @@ public class BoardController {
     public void addGame(@RequestBody Board board){
         boardService.addGame(board);
     }
+
+    @DeleteMapping(value = "/games/removeGame/{id}")
+    public void deleteGame(@PathVariable("id") Long id){
+        boardService.deleteGame(id);
+    }
 }
