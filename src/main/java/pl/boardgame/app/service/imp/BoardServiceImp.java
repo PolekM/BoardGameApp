@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.boardgame.app.dto.GameFilter;
 import pl.boardgame.app.entity.Board;
+import pl.boardgame.app.entity.Publisher;
 import pl.boardgame.app.repository.BoardRepository;
 import pl.boardgame.app.service.BoardService;
 import pl.boardgame.app.specification.BoardSpecification;
@@ -38,5 +39,10 @@ public class BoardServiceImp implements BoardService {
     @Override
     public void deleteGame(Long id) {
         boardRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Board> getGamesByPublisherId(Publisher id) {
+       return boardRepository.findAllByPublisherId(id);
     }
 }
