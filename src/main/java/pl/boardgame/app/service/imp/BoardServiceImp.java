@@ -10,6 +10,8 @@ import pl.boardgame.app.service.BoardService;
 import pl.boardgame.app.specification.BoardSpecification;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.Random;
 
 @Service
 public class BoardServiceImp implements BoardService {
@@ -44,5 +46,19 @@ public class BoardServiceImp implements BoardService {
     @Override
     public List<Board> getGamesByPublisherId(Publisher id) {
        return boardRepository.findAllByPublisherId(id);
+    }
+
+    @Override
+    public Board randomGame() {
+        Random random = new Random();
+        List<Board> allGame = boardRepository.findAll();
+        Board game;
+        try {
+           game =allGame.get(random.nextInt(allGame.size()));
+        }catch (ArrayIndexOutOfBoundsException e){
+            System.out.println(e);
+            game = allGame.get(1);
+        }
+        return game;
     }
 }

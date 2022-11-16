@@ -7,6 +7,7 @@ import pl.boardgame.app.entity.Publisher;
 import pl.boardgame.app.repository.BoardRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 
 public interface BoardService {
@@ -21,4 +22,6 @@ public interface BoardService {
     void deleteGame(Long id);
 
     List<Board> getGamesByPublisherId(Publisher id);
+
+    Board randomGame();
 }

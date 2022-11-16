@@ -8,6 +8,7 @@ import pl.boardgame.app.entity.Publisher;
 import pl.boardgame.app.service.BoardService;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class BoardController {
@@ -41,6 +42,11 @@ public class BoardController {
     @GetMapping(value = "/games/publisher/{id}")
     public List<Board> getGamesByPublisherId(Publisher id){
         return boardService.getGamesByPublisherId(id);
+    }
+
+    @GetMapping(value = "/games/randomGame")
+    public Board randomGame(){
+        return boardService.randomGame();
     }
 
 }
