@@ -3,9 +3,11 @@ package pl.boardgame.app.service;
 import org.springframework.stereotype.Service;
 import pl.boardgame.app.dto.GameFilter;
 import pl.boardgame.app.entity.Board;
+import pl.boardgame.app.entity.Publisher;
 import pl.boardgame.app.repository.BoardRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 
 public interface BoardService {
@@ -18,4 +20,8 @@ public interface BoardService {
     void addGame(Board board);
 
     void deleteGame(Long id);
+
+    List<Board> getGamesByPublisherId(Publisher id);
+
+    Board randomGame();
 }
