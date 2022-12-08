@@ -6,4 +6,6 @@ import pl.boardgame.app.entity.Publisher;
 
 @Repository
 public interface PublisherRepository extends JpaRepository<Publisher,Long> {
+
+    Publisher findByName(String name);
 }

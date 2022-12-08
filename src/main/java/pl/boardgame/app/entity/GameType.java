@@ -15,9 +15,9 @@ public class GameType implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String type;
-
-//    @OneToMany(mappedBy = "gameTypelist",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-//    private Set<Board> boardGames;
+//
+    @OneToMany(mappedBy = "gameTypelist",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    private Set<Board> boardGames;
 
 
 }

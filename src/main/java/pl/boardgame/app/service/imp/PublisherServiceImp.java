@@ -1,5 +1,6 @@
 package pl.boardgame.app.service.imp;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.boardgame.app.entity.Publisher;
@@ -12,10 +13,12 @@ import java.util.List;
 public class PublisherServiceImp implements PublisherService {
 
     private final PublisherRepository publisherRepository;
+    private final ModelMapper modelMapper;
 
     @Autowired
-    public PublisherServiceImp(PublisherRepository publisherRepository) {
+    public PublisherServiceImp(PublisherRepository publisherRepository, ModelMapper modelMapper) {
         this.publisherRepository = publisherRepository;
+        this.modelMapper = modelMapper;
     }
 
     @Override

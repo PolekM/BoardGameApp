@@ -6,4 +6,6 @@ import pl.boardgame.app.entity.GameType;
 
 @Repository
 public interface GameTypeRepository extends JpaRepository<GameType,Long> {
+
+    GameType findByType(String type);
 }
