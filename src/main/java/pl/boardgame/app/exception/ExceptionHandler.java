@@ -8,10 +8,16 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 public class ExceptionHandler {
     @org.springframework.web.bind.annotation.ExceptionHandler(PublisherException.class)
     public ResponseEntity<?> publisherHandler(PublisherException publisherException){
-        return new ResponseEntity<>(publisherException.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+
+        Error e = new Error(publisherException.getMessage(),publisherException.getCause(),HttpStatus.INTERNAL_SERVER_ERROR);
+
+        return new ResponseEntity<>(e,HttpStatus.INTERNAL_SERVER_ERROR);
     }
     @org.springframework.web.bind.annotation.ExceptionHandler(GameTypeException.class)
     public ResponseEntity<?> gameTypeHandler(GameTypeException gameTypeException){
-        return new ResponseEntity<>(gameTypeException.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
+
+        Error e = new Error(gameTypeException.getMessage(),gameTypeException.getCause(),HttpStatus.INTERNAL_SERVER_ERROR);
+
+        return new ResponseEntity<>(e,HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
